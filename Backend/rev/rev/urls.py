@@ -18,12 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import path, include 
 urlpatterns = [
-<<<<<<< HEAD
     path('admin', admin.site.urls),
     path('api/student', include('student.urls')),
     path('api/faculty', include('teacher.urls'))
-=======
-    path('admin/', admin.site.urls),
-    path('api/student/', include('student.urls'))
->>>>>>> 34d61ef8b121b2c0aa995e07ba4947bac72f131d
 ]
