@@ -26,7 +26,7 @@ export default function Teachers() {
         setTeachers(data.results);
         setNextPage(data.next);
         setPreviousPage(data.previous);
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        window.scrollTo({ top: 850, behavior: "smooth" });
       });
   }
   function handlePrevious() {
@@ -36,7 +36,7 @@ export default function Teachers() {
         setTeachers(data.results);
         setPreviousPage(data.previous);
         setNextPage(data.next);
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        window.scrollTo({ top: 850, behavior: "smooth" });
       });
   }
 
@@ -54,7 +54,7 @@ export default function Teachers() {
   return (
     <div className="max-w-7xl m-auto">
       <Fade>
-        <h1 className="text-center py-4 text-5xl font-semibold">
+        <h1 className="text-center py-4 text-5xl font-semibold mt-12 mb-16">
           Our Teachers
         </h1>
       </Fade>
