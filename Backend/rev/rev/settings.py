@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-1w(p2%#t8v1-s2y6@n$=#(b@ej&3(@q7#oab!7bff=c*llu23t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'teacher',
     'rest_framework',
     'rest_framework.authtoken',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -51,6 +52,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'rev.urls'
@@ -77,18 +80,26 @@ WSGI_APPLICATION = 'rev.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# postgre comment out kore rakhsi, ekbare prod e deploy korle uncomment koiro, apatoto sqlite ei rakhi
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'rev_db',     
+#         'USER': 'postgres',    
+#         'PASSWORD': 'postgres',  
+#         'HOST': 'localhost',      
+#         'PORT': '5432',           
+#     }
+# }
+
+# sqlite db
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'rev_db',     
-        'USER': 'postgres',    
-        'PASSWORD': 'postgres',  
-        'HOST': 'localhost',      
-        'PORT': '5432',           
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / "db.sqlite3",
     }
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
@@ -135,3 +146,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+CORS_ALLOW_ALL_ORIGINS = True

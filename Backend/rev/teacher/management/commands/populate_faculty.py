@@ -6,7 +6,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         # Path to the text file (adjust the path as needed)
-        file_path = r'F:\foohyb\asif\test\Backend\rev\teacher\management\commands\brac_data.txt'
+        file_path = r'D:\Teachers Hell\Backend\rev\teacher\management\commands\brac_data.txt'
         try:
             with open(file_path, 'r') as file:
                 lines = file.readlines()
