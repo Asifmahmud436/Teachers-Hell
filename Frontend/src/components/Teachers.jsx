@@ -5,7 +5,7 @@ export default function Teachers() {
   const [teachers, setTeachers] = useState([]);
   const [nextPage, setNextPage] = useState("");
   const [previousPage, setPreviousPage] = useState(null);
-  
+
   useEffect(() => {
     fetch("http://127.0.0.1:8000/api/faculty")
       .then((res) => res.json())
@@ -26,7 +26,7 @@ export default function Teachers() {
         setTeachers(data.results);
         setNextPage(data.next);
         setPreviousPage(data.previous);
-        window.scrollTo({top:0,behavior:'smooth'})
+        window.scrollTo({ top: 0, behavior: "smooth" });
       });
   }
   function handlePrevious() {
@@ -36,8 +36,19 @@ export default function Teachers() {
         setTeachers(data.results);
         setPreviousPage(data.previous);
         setNextPage(data.next);
-        window.scrollTo({top:0,behavior:'smooth'})
+        window.scrollTo({ top: 0, behavior: "smooth" });
       });
+  }
+
+  function handleSearch(event){
+    const {value} = event.currentTarget;
+    // console.log(value)
+    fetch(`http://127.0.0.1:8000/api/faculty/?search=${value}`)
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      setTeachers(data.results)
+    })
   }
 
   return (
@@ -47,6 +58,22 @@ export default function Teachers() {
           Our Teachers
         </h1>
       </Fade>
+
+      {/* search field */}
+      <div>
+        <div className="flex justify-center">
+          <input
+            type="text"
+            name=""
+            id="searchBox"
+            placeholder="Md. Sai..."
+            className=" border-1 rounded-sm py-3 ps-4 w-[600px] me-3"
+            onChange={handleSearch}
+          />
+          
+        </div>
+      </div>
+
       {teachers ? (
         <div className="grid lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2 gap-y-6 mt-9 place-items-center">
           {teachers.map((teacher) => (
@@ -80,15 +107,14 @@ export default function Teachers() {
             </Slide>
           ))}
         </div>
-      ):
-      (
+      ) : (
         <div>Loading All teachers</div>
-      ) }
+      )}
       {/* pagination */}
       <div className="text-center my-12">
         {previousPage && (
           <button
-            className="me-12 px-5 py-2 bg-gray-300 rounded-sm hover:shadow-md transition-shadow hover:font-semibold duration-300"
+            className="me-12 px-5 py-2 bg-gray-300 rounded-sm hover:shadow-md hover:scale-105 transition-all hover:font-bold duration-300"
             onClick={handlePrevious}
           >
             Prev
@@ -96,7 +122,7 @@ export default function Teachers() {
         )}
         {nextPage && (
           <button
-            className="me-12 px-5 py-2 bg-gray-300 rounded-sm hover:shadow-md transition-shadow hover:font-semibold duration-300"
+            className="me-12 px-5 py-2 bg-gray-300 rounded-sm hover:shadow-md hover:scale-105 transition-all hover:font-bold duration-300"
             onClick={handleNext}
           >
             Next
