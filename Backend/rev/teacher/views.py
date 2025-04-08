@@ -1,16 +1,29 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.pagination import PageNumberPagination
 from teacher.models import Faculty
 from teacher.serializers import FacultySerializer
 
+class FacultyPagination(PageNumberPagination):
+    page_size = 10  # The number of items per page 
+
 class FacultyListView(APIView):
     def get(self, request, *args, **kwargs):
-        # Fetch all faculty members from the database
-        faculties = Faculty.objects.all()
+        search_query = request.query_params.get('search', '')
         
-        # Serialize the data
-        serializer = FacultySerializer(faculties, many=True)
+        # Filter faculties based on search query
+        if search_query:
+            faculties = Faculty.objects.filter(name__icontains=search_query)
+        else:
+            faculties = Faculty.objects.all()
+
+        # Apply pagination
+        paginator = FacultyPagination()
+        paginated_faculties = paginator.paginate_queryset(faculties, request)
         
-        # Return the serialized data as a JSON response
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        # Serialize the paginated faculty data
+        serializer = FacultySerializer(paginated_faculties, many=True)
+
+        # Return the paginated response
+        return paginator.get_paginated_response(serializer.data)
