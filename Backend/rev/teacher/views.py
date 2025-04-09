@@ -2,8 +2,9 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.pagination import PageNumberPagination
-from teacher.models import Faculty
-from teacher.serializers import FacultySerializer
+from teacher.models import Review, Faculty
+from teacher.serializers import ReviewSerializer , FacultySerializer
+from django.db.models import Avg  
 
 class FacultyPagination(PageNumberPagination):
     page_size = 10  # The number of items per page 
@@ -27,3 +28,67 @@ class FacultyListView(APIView):
 
         # Return the paginated response
         return paginator.get_paginated_response(serializer.data)
+        
+class ReviewCreateView(APIView):
+    def post(self, request, *args, **kwargs):
+        # Extract the faculty ID from the request data
+        faculty_id = request.data.get('faculty')
+        faculty = Faculty.objects.filter(id=faculty_id).first()
+
+        if not faculty:
+            return Response({"detail": "Faculty not found."}, status=status.HTTP_404_NOT_FOUND)
+
+        # Serialize the review data
+        serializer = ReviewSerializer(data=request.data)
+        if serializer.is_valid():
+            # Save the review
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class FacultyAverageRatingView(APIView):
+    def get(self, request, *args, **kwargs):
+        faculty_id = request.query_params.get('faculty_id')
+        
+        if not faculty_id:
+            return Response({"detail": "Faculty ID is required."}, status=status.HTTP_400_BAD_REQUEST)
+
+      
+        faculty = Faculty.objects.filter(id=faculty_id).first()
+
+        if not faculty:
+            return Response({"detail": "Faculty not found."}, status=status.HTTP_404_NOT_FOUND)
+
+        reviews = Review.objects.filter(faculty=faculty)
+
+        if reviews.count() == 0:
+            return Response({"detail": "No reviews available for this faculty."}, status=status.HTTP_404_NOT_FOUND)
+
+
+        average_rating = reviews.aggregate(Avg('rating'))['rating__avg']
+
+      
+        return Response({"faculty_id": faculty_id, "average_rating": average_rating}, status=status.HTTP_200_OK)
+
+class ReviewListView(APIView):
+    def get(self, request, *args, **kwargs):
+     
+        faculty_id = request.query_params.get('faculty_id')
+        
+        if not faculty_id:
+            return Response({"detail": "Faculty ID is required."}, status=status.HTTP_400_BAD_REQUEST)
+
+ 
+        faculty = Faculty.objects.filter(id=faculty_id).first()
+
+        if not faculty:
+            return Response({"detail": "Faculty not found."}, status=status.HTTP_404_NOT_FOUND)
+
+      
+        reviews = Review.objects.filter(faculty=faculty)
+
+     
+        serializer = ReviewSerializer(reviews, many=True)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)

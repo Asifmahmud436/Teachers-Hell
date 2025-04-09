@@ -8,3 +8,7 @@ class Faculty(models.Model):
     def __str__(self):
         return f"{self.name} - {self.designation}"
 
+class Review(models.Model):
+    faculty = models.ForeignKey(Faculty, related_name='reviews', on_delete=models.CASCADE)
+    rating = models.PositiveIntegerField()
+    review_text = models.TextField()
