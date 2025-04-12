@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Slide, Zoom, Fade } from "react-awesome-reveal";
+import { NavLink } from "react-router-dom";
 
 export default function Teachers() {
   const [teachers, setTeachers] = useState([]);
@@ -40,15 +41,15 @@ export default function Teachers() {
       });
   }
 
-  function handleSearch(event){
-    const {value} = event.currentTarget;
+  function handleSearch(event) {
+    const { value } = event.currentTarget;
     // console.log(value)
     fetch(`http://127.0.0.1:8000/api/faculty/?search=${value}`)
-    .then(res => res.json())
-    .then(data => {
-      console.log(data)
-      setTeachers(data.results)
-    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setTeachers(data.results);
+      });
   }
 
   return (
@@ -70,7 +71,6 @@ export default function Teachers() {
             className=" border-1 rounded-sm py-3 ps-4 w-[600px] me-3"
             onChange={handleSearch}
           />
-          
         </div>
       </div>
 
@@ -97,10 +97,14 @@ export default function Teachers() {
                 </h3>
                 <div className="flex">
                   <button className="rounded-sm bg-green-700 px-4 py-2  text-white font-semibold hover:bg-green-500 transition-all duration-500 me-4">
-                    Bless
+                    <NavLink to={`/${teacher.name}`}>
+                      Bless
+                    </NavLink>
                   </button>
                   <button className="rounded-sm bg-green-700 px-4 py-2  text-white font-semibold hover:bg-red-500 transition-all duration-500">
-                    Burn
+                    <NavLink to={`/${teacher.name}`}>
+                      Burn
+                    </NavLink>
                   </button>
                 </div>
               </div>

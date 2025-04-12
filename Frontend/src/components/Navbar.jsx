@@ -1,10 +1,11 @@
 import { Slide, AttentionSeeker, Fade } from "react-awesome-reveal";
+import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
   return (
     <nav className="flex justify-around items-center text-white text-2xl bg-black h-16 font-[Work Sans]">
       
-        <h1 className="text-4xl font-semibold">Teachers Hell</h1>
+        <h1 className="text-4xl font-semibold"><NavLink to='/'>Teachers Hell</NavLink></h1>
       
       <Slide direction="up" cascade triggerOnce>
         <div className="flex space-x-6 justify-around ">
