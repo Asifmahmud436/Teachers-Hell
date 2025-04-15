@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Slide, Zoom, Fade } from "react-awesome-reveal";
 import { NavLink } from "react-router-dom";
+import "@fontsource/albert-sans";
 
 export default function Teachers() {
   const [teachers, setTeachers] = useState([]);
@@ -53,9 +54,9 @@ export default function Teachers() {
   }
 
   return (
-    <div className="max-w-7xl m-auto">
+    <div className="max-w-7xl m-auto font-[Albert_Sans]">
       <Fade>
-        <h1 className="text-center py-4 text-5xl font-semibold mt-12 mb-16">
+        <h1 className="text-center py-4 text-5xl font-semibold mt-12 mb-16 ">
           Our Teachers
         </h1>
       </Fade>
@@ -75,12 +76,12 @@ export default function Teachers() {
       </div>
 
       {teachers ? (
-        <div className="grid lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2 gap-y-6 mt-9 place-items-center">
+        <div className="grid lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2 gap-y-6 mt-9 place-items-center ">
           {teachers.map((teacher) => (
             <Slide direction="up">
               <div
                 key={teacher.id}
-                className="border-2 border-green-500 border-s-green-500 border-s-8 rounded-sm p-4 max-w-[300px] flex flex-col h-[225px] hover:shadow-lg hover:shadow-blue-400
+                className="border-2 border-green-500 border-s-green-500 border-s-8 rounded-sm p-4 max-w-[300px] flex flex-col h-[250px] hover:shadow-lg hover:shadow-blue-400
               hover:border-s-blue-700
               hover:border-blue-700
               hover:scale-105 transition-all duration-600"

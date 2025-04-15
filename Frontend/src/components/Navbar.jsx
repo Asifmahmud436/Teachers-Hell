@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <nav className="flex justify-around items-center text-white text-2xl bg-black h-16 font-[Work Sans]">
+    <nav className="flex justify-around items-center text-white text-2xl bg-black h-16">
       
         <h1 className="text-4xl font-semibold"><NavLink to='/'>Teachers Hell</NavLink></h1>
       
