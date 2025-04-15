@@ -2,7 +2,6 @@
 
 // /api/faculty/reviews/average-rating/?faculty_id=1
 
-// id unojai kono teacher er average review ar review list gula dekhte parba
 
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
