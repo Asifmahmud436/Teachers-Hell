@@ -112,6 +112,4 @@ Describe your changes and reference any related issues.
 # License
 This project is licensed under the MIT License. See the  file for details.
 
-Built with ❤️ by [Your Name]
-For questions or feedback, contact [[your-email@example.com](mailto:your-email@example.com" target="_blank" rel="noopener noreferrer)].
-Follow the project on GitHub: [https://github.com/your-username/bracademic-review](https://github.com/your-username/bracademic-review" target="_blank" rel="noopener noreferrer)
+Built with ❤️ by Asif Mahmud and Abdullah Al Fahad
