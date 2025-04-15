@@ -31,8 +31,8 @@ BracademicReview is a web application designed to allow users to explore and rev
   - React Router DOM (for client-side routing)
   - react-awesome-reveal (for slide, fade, and zoom animations)
   - swiffy-slider (for review carousel)
-  - Tailwind CSS (inferred from class names like `max-w-7xl`, `m-auto`, `lg:grid-cols-3`, etc.)
-  - Custom CSS (`index.css` for global styling)
+  - Tailwind CSS 
+  - Custom CSS 
 - **Backend**:
   - REST API (assumed to be Django-based, running at `http://127.0.0.1:8000`)
 - **Other**:
@@ -59,54 +59,8 @@ bashCopyyarn install
 
 Set Up the Backend:
 
-Ensure the backend API is running at http://127.0.0.1:8000. This could be a Django server or any REST API compatible with the endpoints used.
-Verify that the API supports the required endpoints (see  below).
-If using Django, ensure the database is migrated and the server is running:
-bashCopypython manage.py migrate
-python manage.py runserver
+Ensure the backend API is running at http://127.0.0.1:8000 and the frontend at http://localhost:3000 in your default browser.
 
-
-
-Run the Application:
-bashCopynpm start
-or
-bashCopyyarn start
-The app will launch at http://localhost:3000 in your default browser.
-
-Usage
-
-Home Page: Access the landing page via the navbar to get an overview of the application.
-Teachers Page: Browse a list of teachers with search and pagination. Use the search bar to filter teachers by name, and click "Next" or "Previous" to navigate through results. Each teacher card includes "Bless" and "Burn" buttons to view their details.
-Faculty Details: View a teacher’s profile, including their photo, designation, department, and average rating. Submit a review using the form with a star rating and text comment. Recent reviews are displayed in a carousel below.
-Write Review: Navigate to the "Write Review" link in the navbar to submit a review (assumed to be a separate page, though not fully implemented in the provided code).
-University Page: Explore university-related content (placeholder; functionality not shown in the provided code).
-Navigation: Use the animated navbar to switch between pages, with active links highlighted in a distinct pink shade (#FF416C).
-
-Project Structure
-textCopybracademic-review/
-├── public/
-│   ├── logo2.png           # Logo image used in the navbar
-│   ├── index.html          # Main HTML template
-│   └── favicon.ico         # (Assumed; add if applicable)
-├── src/
-│   ├── components/
-│   │   ├── Navbar.jsx      # Responsive navigation bar component
-│   │   ├── Teachers.jsx    # Teacher listing with search and pagination
-│   │   └── FacultyDetails.jsx # Teacher profile with review form and carousel
-│   ├── index.css           # Global CSS styles (gradient backgrounds, etc.)
-│   ├── App.jsx             # Main app component with routes (assumed)
-│   └── index.js            # Entry point for React
-├── package.json            # Project dependencies and scripts
-├── README.md               # This file
-└── .gitignore              # Git ignore file (assumed)
-Notes
-
-The App.jsx file is assumed to contain the main routing logic using react-router-dom.
-Ensure logo2.png is placed in the public folder, as referenced in Navbar.jsx.
-Additional components (e.g., for the "Home" or "University" pages) may exist but are not included in the provided code.
-
-API Endpoints
-The frontend communicates with the following backend API endpoints (based on the fetch calls in the code):
 
 GET /api/faculty:
 
@@ -118,53 +72,17 @@ Response: { results: [], next: string|null, previous: string|null }
 GET /api/faculty/reviews/list/?faculty_id=&lt;id&gt;&amp;limit=20:
 
 Retrieves up to 20 reviews for a specific teacher by faculty_id.
-Response: Array of review objects ({ review_text, rating, ... }).
 
 
 GET /api/faculty/reviews/average-rating/?faculty_id=&lt;id&gt;:
 
 Fetches the average rating for a teacher by faculty_id.
-Response: { average_rating: number|null }
 
 
 POST /api/faculty/reviews/:
-
 Submits a new review.
-Request body: { faculty: number, rating: number, review_text: string }
-Response: Review object or error message.
 
-
-
-Ensure the backend API is configured to handle these endpoints. If authentication is required, update the fetch calls with appropriate headers (e.g., Authorization).
-Screenshots
-(Screenshots are placeholders; replace with actual images if available)
-
-Navbar:
-
-A gradient-themed navbar with animated dropdown and active link highlighting.
-
-
-
-Teachers Page:
-
-Grid layout of teacher cards with search bar and pagination buttons.
-
-
-
-Faculty Details Page:
-
-Teacher profile with review form and sliding review carousel.
-
-
-
-
-Adding Screenshots
-
-Create a screenshots/ folder in the project root.
-Capture images of the app (e.g., using browser developer tools or a screenshot tool).
-Update the paths above (e.g., screenshots/navbar.png) with actual filenames.
-
-Contributing
+# Contributing:
 We welcome contributions to improve BracademicReview! To contribute:
 
 Fork the Repository:
@@ -173,28 +91,25 @@ bashCopygit clone https://github.com/your-username/bracademic-review.git
 Create a Feature Branch:
 bashCopygit checkout -b feature/your-feature-name
 
-Make Changes:
+# Make Changes:
 
 Follow the coding style (e.g., consistent JSX formatting, Tailwind classes).
 Add tests if applicable (e.g., using Jest for React components).
 Update documentation for new features.
 
 
-Commit Changes:
+# Commit Changes:
 bashCopygit commit -m "Add your feature description"
 
-Push to Your Fork:
+# Push to Your Fork:
 bashCopygit push origin feature/your-feature-name
 
-Open a Pull Request:
+# Open a Pull Request:
 
 Go to the original repository on GitHub and create a pull request.
 Describe your changes and reference any related issues.
 
-
-
-Please ensure your code is well-documented and passes any existing tests.
-License
+# License
 This project is licensed under the MIT License. See the  file for details.
 
 Built with ❤️ by [Your Name]
