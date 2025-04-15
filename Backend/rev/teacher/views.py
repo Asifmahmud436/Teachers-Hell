@@ -73,22 +73,15 @@ class FacultyAverageRatingView(APIView):
 
 class ReviewListView(APIView):
     def get(self, request, *args, **kwargs):
-     
         faculty_id = request.query_params.get('faculty_id')
-        
-        if not faculty_id:
-            return Response({"detail": "Faculty ID is required."}, status=status.HTTP_400_BAD_REQUEST)
 
- 
-        faculty = Faculty.objects.filter(id=faculty_id).first()
+        if faculty_id:
+            faculty = Faculty.objects.filter(id=faculty_id).first()
+            if not faculty:
+                return Response({"detail": "Faculty not found."}, status=status.HTTP_404_NOT_FOUND)
+            reviews = Review.objects.filter(faculty=faculty)
+        else:
+            reviews = Review.objects.all()
 
-        if not faculty:
-            return Response({"detail": "Faculty not found."}, status=status.HTTP_404_NOT_FOUND)
-
-      
-        reviews = Review.objects.filter(faculty=faculty)
-
-     
         serializer = ReviewSerializer(reviews, many=True)
-
         return Response(serializer.data, status=status.HTTP_200_OK)
