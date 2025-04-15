@@ -12,7 +12,6 @@ export default function Teachers() {
     fetch("http://127.0.0.1:8000/api/faculty")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setTeachers(data.results);
         setNextPage(data.next);
       })
@@ -44,11 +43,9 @@ export default function Teachers() {
 
   function handleSearch(event) {
     const { value } = event.currentTarget;
-    // console.log(value)
     fetch(`http://127.0.0.1:8000/api/faculty/?search=${value}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setTeachers(data.results);
       });
   }

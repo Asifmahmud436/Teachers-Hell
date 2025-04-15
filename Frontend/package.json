@@ -19,6 +19,7 @@
     "react-awesome-reveal": "^4.3.1",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.5.0",
+    "swiffy-slider": "^1.6.0",
     "tailwindcss": "^4.0.14"
   },
   "devDependencies": {
