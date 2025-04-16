@@ -3,18 +3,23 @@ import RecentReviews from "../components/RecentReviews";
 import Teachers from "../components/Teachers";
 import { FaSearch } from "react-icons/fa";
 import { Slide, Zoom, Fade } from "react-awesome-reveal";
+import Data from "../components/Data";
 
 export default function Home() {
   return (
     <>
       <div className="h-[400px] flex flex-col items-center justify-center space-y-4 bg-gradient-to-b from-black to-zinc-900">
-        <Slide direction="up">
+        
+          <Slide>
           <h1 className="text-4xl py-3 text-white font-semibold">
             Rate Your Bracademic Experience
           </h1>
+          </Slide>
+          <Slide direction="right">
           <p className="text-sm text-[#D1D5DB]">
             Help future students make informed decisions
           </p>
+          </Slide>
           <div className="relative w-[600px]">
             <input
               type="text"
@@ -31,10 +36,10 @@ export default function Home() {
               <FaSearch className="text-[#FF5533]" size={20} />
             </button>
           </div>
-        </Slide>
+        
       </div>
       <RecentReviews />
-      <Teachers />
+      <Data/>
     </>
   );
 }

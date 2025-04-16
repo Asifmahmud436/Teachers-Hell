@@ -16,13 +16,13 @@ export default function RecentReviews() {
   return (
     <div className="bg-gradient-to-b from-black to-zinc-900 h-full text-white py-4 pb-9">
       <Slide duration={1000}>
-        <h1 className="text-2xl font-semibold ms-14 mb-6">Recent Reviews</h1>
+        <h1 className="text-2xl font-semibold lg:ms-24 mb-6 sm:text-center lg:text-start">Recent Reviews</h1>
       </Slide>
-      <div className="grid lg:grid-cols-3  md:grid-cols-1 sm:grid-cols-1 place-items-stretch gap-6 px-14">
+      <div className="grid lg:grid-cols-3  md:grid-cols-1 sm:grid-cols-1 place-items-center gap-6 px-14">
         <Fade>
           {reviews.map((review) => (
             <div
-              className="p-4 bg-[#2A2A2A] w-[442px] h-full flex flex-col rounded-sm shadow-gray-600"
+              className="p-4 bg-[#2A2A2A] w-[442px] h-full flex flex-col rounded-sm hover:scale-105 duration-1000 hover:bg-black hover:shadow-gray-600 hover:shadow-xl"
               key={review.faculty_name}
             >
               <div className="flex justify-between ">
