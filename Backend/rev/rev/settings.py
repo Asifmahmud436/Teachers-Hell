@@ -31,6 +31,8 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
+    
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -46,6 +48,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -82,24 +85,24 @@ WSGI_APPLICATION = 'rev.wsgi.application'
 
 # postgre comment out kore rakhsi, ekbare prod e deploy korle uncomment koiro, apatoto sqlite ei rakhi
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'rev_db',     
-#         'USER': 'postgres',    
-#         'PASSWORD': 'postgres',  
-#         'HOST': 'localhost',      
-#         'PORT': '5432',           
-#     }
-# }
-
-# sqlite db
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / "db.sqlite3",
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',     
+        'USER': 'postgres.hywgrwzyzgkteemspldf',    
+        'PASSWORD': 'bracademic124',  
+        'HOST': 'aws-0-ap-south-1.pooler.supabase.com',      
+        'PORT': '6543',           
     }
 }
+
+# sqlite db
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / "db.sqlite3",
+#     }
+# }
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
