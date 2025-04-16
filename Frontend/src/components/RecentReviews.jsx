@@ -8,7 +8,7 @@ import { CiStar } from "react-icons/ci"
 export default function RecentReviews() {
   const [reviews, setReviews] = useState([])
   useEffect(() => {
-    fetch(`http://127.0.0.1:8000/api/faculty/reviews/list/`)
+    fetch(`https://bracademic.vercel.app/api/faculty/reviews/list/`)
       .then((res) => res.json())
       .then((data) => {
         setReviews(data.slice(0, 6))

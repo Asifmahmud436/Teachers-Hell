@@ -30,7 +30,7 @@ const router = createBrowserRouter([
         path:':name',
         element: <FacultyDetails/>, 
         loader : async ({params})=> {
-          const response = await fetch(`http://127.0.0.1:8000/api/faculty/?search=${params.name}`)
+          const response = await fetch(`https://bracademic.vercel.app/api/faculty/?search=${params.name}`)
           return response.json();
         }
       }

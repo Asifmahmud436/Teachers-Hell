@@ -22,7 +22,7 @@ export default function FacultyDetails() {
   const [avgRating, setAvgRating] = useState([])
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:8000/api/faculty/reviews/list/?faculty_id=${id}&limit=20`)
+    fetch(`https://bracademic.vercel.app/api/faculty/reviews/list/?faculty_id=${id}&limit=20`)
       .then((res) => res.json())
       .then((data) => {
         setReviews(data)
@@ -38,7 +38,7 @@ export default function FacultyDetails() {
   }, [id])
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:8000/api/faculty/reviews/average-rating/?faculty_id=${id}`)
+    fetch(`https://bracademic.vercel.app/api/faculty/reviews/average-rating/?faculty_id=${id}`)
       .then((res) => res.json())
       .then((data) => {
         setAvgRating(data.average_rating)
@@ -57,7 +57,7 @@ export default function FacultyDetails() {
     }
 
     try {
-      const res = await fetch(`http://127.0.0.1:8000/api/faculty/reviews/`, {
+      const res = await fetch(`https://bracademic.vercel.app/api/faculty/reviews/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

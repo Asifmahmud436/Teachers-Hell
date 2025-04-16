@@ -10,7 +10,7 @@ export default function Teachers() {
   const [previousPage, setPreviousPage] = useState(null)
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/faculty")
+    fetch("https://bracademic.vercel.app/api/faculty")
       .then((res) => res.json())
       .then((data) => {
         setTeachers(data.results)
@@ -44,7 +44,7 @@ export default function Teachers() {
 
   function handleSearch(event) {
     const { value } = event.currentTarget
-    fetch(`http://127.0.0.1:8000/api/faculty/?search=${value}`)
+    fetch(`https://bracademic.vercel.app/api/faculty/?search=${value}`)
       .then((res) => res.json())
       .then((data) => {
         setTeachers(data.results)
