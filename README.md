@@ -82,7 +82,7 @@ Fetches the average rating for a teacher by faculty_id.
 POST /api/faculty/reviews/:
 Submits a new review.
 
-## Contributing:
+##  Contributing:
 We welcome contributions to improve BracademicReview! To contribute:
 
 Fork the Repository:
@@ -91,25 +91,25 @@ bashCopygit clone https://github.com/your-username/bracademic-review.git
 Create a Feature Branch:
 bashCopygit checkout -b feature/your-feature-name
 
-## Make Changes:
+##  Make Changes:
 
 Follow the coding style (e.g., consistent JSX formatting, Tailwind classes).
 Add tests if applicable (e.g., using Jest for React components).
 Update documentation for new features.
 
 
-## Commit Changes:
+##  Commit Changes:
 bashCopygit commit -m "Add your feature description"
 
-## Push to Your Fork:
+##  Push to Your Fork:
 bashCopygit push origin feature/your-feature-name
 
-## Open a Pull Request:
+##  Open a Pull Request:
 
 Go to the original repository on GitHub and create a pull request.
 Describe your changes and reference any related issues.
 
-## License
+##  License
 This project is licensed under the MIT License. See the  file for details.
 
 Built with ❤️ by Asif Mahmud and Abdullah Al Fahad
