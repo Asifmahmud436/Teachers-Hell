@@ -37,17 +37,7 @@ export default function Navbar() {
             >
               Teachers
             </NavLink>
-            <NavLink
-              style={({ isActive }) => ({
-                backgroundColor: isActive ? "#FF416C" : null,
-                padding: "5px 10px",
-                borderRadius: "3px",
-                fontWeight:isActive ? "600": null,
-              })}
-              to='/write_review'
-            >
-              Write Review
-            </NavLink>
+            
           </ul>
         </div>
       </Slide>

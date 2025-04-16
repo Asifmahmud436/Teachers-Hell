@@ -7,7 +7,7 @@ from teacher.serializers import ReviewSerializer , FacultySerializer
 from django.db.models import Avg  
 
 class FacultyPagination(PageNumberPagination):
-    page_size = 10  # The number of items per page 
+    page_size = 9  # The number of items per page 
 
 class FacultyListView(APIView):
     def get(self, request, *args, **kwargs):

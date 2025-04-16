@@ -72,7 +72,7 @@ export default function FacultyDetails() {
   };
 
   return (
-    <div className="max-w-7xl m-auto mt-24 ">
+    <div className="bg-gradient-to-l from-black to-zinc-900 py-9 text-white">
       <div className="flex lg:flex-row justify-evenly md:flex-col md:items-center md:space-y-6 md:text-center">
         <img
           src={data.results[0].profile_picture_url}
@@ -130,12 +130,12 @@ export default function FacultyDetails() {
       {/* all rating */}
       <h1 className="text-center text-3xl">Recent Reviews</h1>
       {reviews.length != 0 ? (
-        <div className="swiffy-slider slider-item-show3 slider-nav-round slider-nav-page my-12 slider-nav-autoplay slider-nav-animation-fast">
+        <div className="swiffy-slider slider-item-show3 slider-nav-round slider-nav-page my-12 slider-nav-autoplay slider-nav-animation-fast max-w-6xl m-auto items-center">
           <ul className="slider-container">
             {reviews.map((item, idx) => (
               <li key={idx}>
                 <div className="card border-0">
-                  <div className="card-body p-8 w-[400px] h-[200px]  rounded-sm bg-gray-200">
+                  <div className="card-body p-8 w-[300px] h-[200px]  rounded-sm bg-[#2A2A2A] py-9">
                     <div className="d-flex">
                       <p className="card-text text-2xl mb-4">
                         {item.review_text}
