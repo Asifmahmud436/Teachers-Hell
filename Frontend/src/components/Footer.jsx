@@ -6,10 +6,10 @@ import { FaInstagramSquare } from "react-icons/fa"
 function Footer() {
   return (
     <div>
-      {/* Main Footer Content */}
+      
       <div className="bg-gradient-to-r from-black to-zinc-900 text-[#9CA3AF] px-4 py-8 sm:py-9">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-          {/* Column 1 */}
+          
           <div className="text-center sm:text-left">
             <h1 className="mb-4 sm:mb-6 text-white font-semibold text-lg">Academic Review</h1>
             <p>
@@ -18,7 +18,7 @@ function Footer() {
             </p>
           </div>
 
-          {/* Column 2 */}
+         
           <div className="text-center sm:text-left">
             <h1 className="mb-4 sm:mb-6 text-white font-semibold text-lg">Navigation</h1>
             <p className="py-1 sm:py-2 text-sm">Home</p>
@@ -27,7 +27,7 @@ function Footer() {
             <p className="py-1 sm:py-2 text-sm">Write Review</p>
           </div>
 
-          {/* Column 3 */}
+          
           <div className="text-center sm:text-left">
             <h1 className="mb-4 sm:mb-6 text-white font-semibold text-lg">Legal</h1>
             <p className="py-1 sm:py-2 text-sm">Privacy Policy</p>
@@ -36,7 +36,7 @@ function Footer() {
             <p className="py-1 sm:py-2 text-sm">About Us</p>
           </div>
 
-          {/* Column 4 */}
+          
           <div className="text-center sm:text-left">
             <h1 className="mb-4 sm:mb-6 text-white font-semibold text-lg">Connect</h1>
             <p className="py-1 sm:py-2 text-sm">Contact</p>
