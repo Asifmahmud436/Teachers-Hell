@@ -5,7 +5,7 @@ export default function Universities() {
   return (
     <div className="bg-gradient-to-l from-black to-zinc-900 h-full text-white py-4 pb-9">
       <Slide duration={1000}>
-        <h1 className="text-2xl font-semibold lg:ms-24 mb-6 sm:text-center lg:text-start">
+        <h1 className="text-2xl font-semibold mb-6 text-center">
           Top Universities
         </h1>
       </Slide>
