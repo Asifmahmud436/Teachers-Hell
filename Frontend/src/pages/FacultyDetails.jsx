@@ -83,7 +83,7 @@ export default function FacultyDetails() {
     <div className="bg-gradient-to-l from-black to-zinc-900 py-6 sm:py-9 text-white px-4 sm:px-6">
       <div className="flex flex-col sm:items-center lg:flex-row lg:justify-evenly gap-6 max-w-6xl mx-auto">
         <img
-          src={data.results[0].profile_picture_url || "/placeholder.svg"}
+          src='./person.png'
           alt={data.results[0].name}
           className="w-full max-w-[300px] h-auto object-cover rounded-sm mx-auto lg:mx-0"
         />
