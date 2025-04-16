@@ -77,7 +77,9 @@ export default function Teachers() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mt-6 md:mt-9 place-items-center px-4 sm:px-6">
           {teachers.map((teacher) => (
             <Slide direction="up" key={teacher.id}>
-              <div className="p-4 bg-[#2A2A2A] w-full max-w-[442px] h-full flex flex-col rounded-sm hover:scale-105 duration-1000 hover:bg-black hover:shadow-gray-600 hover:shadow-xl">
+              <div className="p-4 bg-[#2A2A2A] w-[342px] min-h-[280px] flex flex-col justify-between rounded-sm hover:scale-105 duration-1000 hover:bg-black hover:shadow-gray-600 hover:shadow-xl">
+
+
                 <h1 className="text-white font-bold mb-4 md:mb-6 text-lg md:text-xl">{teacher.name}</h1>
                 <p className="mb-2 text-[#D1D5DB] text-xs md:text-sm">
                   Designation: <span className="font-bold">{teacher.designation}</span>
