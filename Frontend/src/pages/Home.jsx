@@ -4,18 +4,19 @@ import Teachers from "../components/Teachers";
 import { FaSearch } from "react-icons/fa";
 import { Slide, Zoom, Fade } from "react-awesome-reveal";
 import Data from "../components/Data";
+import Universities from "../components/Universities";
 
 export default function Home() {
   return (
     <>
       <div className="h-[400px] flex flex-col items-center justify-center space-y-4 bg-gradient-to-b from-black to-zinc-900">
         
-          <Slide>
+          <Slide direction="down" duration={1000}>
           <h1 className="text-4xl py-3 text-white font-semibold">
             Rate Your Bracademic Experience
           </h1>
           </Slide>
-          <Slide direction="right">
+          <Slide direction="down" duration={1000}>
           <p className="text-sm text-[#D1D5DB]">
             Help future students make informed decisions
           </p>
@@ -40,6 +41,7 @@ export default function Home() {
       </div>
       <RecentReviews />
       <Data/>
+      <Universities/>
     </>
   );
 }

@@ -5,7 +5,7 @@ import '../index.css'
 export default function Navbar() {
   return (
     <nav className="flex justify-around bg-gradient-to-l from-black to-zinc-900 items-center h-[60px] ">
-      <Slide direction="down">
+      <Slide direction="down" duration={2000}>
         <div className="text-[#FF416C] flex items-center ">
           <img src="./logo2.png" alt="" className="h-[30px] w-[34px] ms-3" />
           <NavLink className="font-semibold" to="/">
@@ -25,17 +25,7 @@ export default function Navbar() {
             >
               Home
             </NavLink>
-            <NavLink
-              style={({ isActive }) => ({
-                backgroundColor: isActive ? "#FF416C" : null,
-                padding: "5px 10px",
-                borderRadius: "3px",
-                fontWeight:isActive ? "600": null,
-              })}
-              to="/university"
-            >
-              University
-            </NavLink>
+            
             <NavLink
               style={({ isActive }) => ({
                 backgroundColor: isActive ? "#FF416C" : null,
@@ -54,7 +44,7 @@ export default function Navbar() {
                 borderRadius: "3px",
                 fontWeight:isActive ? "600": null,
               })}
-              to="/write review"
+              to='/write_review'
             >
               Write Review
             </NavLink>
