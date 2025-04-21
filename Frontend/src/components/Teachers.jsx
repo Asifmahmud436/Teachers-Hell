@@ -14,6 +14,7 @@ export default function Teachers() {
       .then((res) => res.json())
       .then((data) => {
         setTeachers(data.results)
+        console.log(data.results)
         setNextPage(data.next)
       })
       .catch((error) => {
@@ -54,7 +55,7 @@ export default function Teachers() {
   return (
     <div className="w-full bg-gradient-to-l from-black to-zinc-900 text-white py-6 md:py-9">
       <Fade>
-        <h1 className="text-center py-4 text-3xl md:text-4xl lg:text-5xl font-semibold mt-6 md:mt-12 mb-8 md:mb-16">
+        <h1 className="text-center py-4 text-3xl md:text-4xl lg:text-5xl font-semibold mt-6 md:mt-12 mb-8 md:mb-16 text-orange-600">
           Our Teachers
         </h1>
       </Fade>
@@ -67,7 +68,7 @@ export default function Teachers() {
             name=""
             id="searchBox"
             placeholder="Md. Sai..."
-            className="border-1 rounded-sm py-2 md:py-3 ps-4 w-full max-w-[600px] me-3"
+            className="border-1 rounded-sm py-2 md:py-3 ps-4 w-full max-w-[600px] me-3 border-orange-500"
             onChange={handleSearch}
           />
         </div>
@@ -78,11 +79,16 @@ export default function Teachers() {
           {teachers.map((teacher) => (
             <Slide direction="up" key={teacher.id}>
               <div className="p-4 bg-[#2A2A2A] w-[302px] min-h-[280px] flex flex-col justify-between rounded-sm hover:scale-105 duration-1000 hover:bg-black hover:shadow-gray-600 hover:shadow-xl">
-
-
-                <h1 className="text-white font-bold mb-4 md:mb-6 text-lg md:text-xl">{teacher.name}</h1>
-                <p className="mb-2 text-[#D1D5DB] text-xs md:text-sm">
-                  Designation: <span className="font-bold">{teacher.designation}</span>
+                <div className="flex items-center gap-4 mb-5">
+                  <img
+                    src="./person.png"
+                    alt="teachers photo"
+                    className="w-[80px] h-[80px] rounded-full object-cover border-2  shadow-md"
+                  />
+                  <h1 className="text-blue-300 font-bold text-lg md:text-xl">{teacher.name}</h1>
+                </div>
+                <p className="mb-2 text-orange-600 text-xs md:text-sm">
+                  Designation: <span className="font-bold text-white">{teacher.designation}</span>
                 </p>
                 <h3 className="text-[#D1D5DB] font-semibold flex-grow pb-2 text-xs md:text-sm">{teacher.department}</h3>
                 <div className="flex flex-wrap gap-2">

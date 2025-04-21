@@ -20,12 +20,15 @@ export default function FacultyDetails() {
   const [stars, setStars] = useState(1)
   const [reviews, setReviews] = useState([])
   const [avgRating, setAvgRating] = useState([])
+  const [sentiment, setSentiment] = useState('')
 
   useEffect(() => {
     fetch(`https://bracademic.vercel.app/api/faculty/reviews/list/?faculty_id=${id}&limit=20`)
       .then((res) => res.json())
       .then((data) => {
-        setReviews(data)
+        setReviews(data.reviews)
+        setSentiment(data.average_sentiment)
+        console.log(data)
         setTimeout(() => {
           if (window.swiffyslider) {
             window.swiffyslider.init()
@@ -79,20 +82,22 @@ export default function FacultyDetails() {
     setText("")
   }
 
+  
   return (
     <div className="bg-gradient-to-l from-black to-zinc-900 py-6 sm:py-9 text-white px-4 sm:px-6">
       <div className="flex flex-col sm:items-center lg:flex-row lg:justify-evenly gap-6 max-w-6xl mx-auto">
         <img
           src='./person.png'
           alt={data.results[0].name}
-          className="w-full max-w-[300px] h-auto object-cover rounded-sm mx-auto lg:mx-0"
+          className="w-full max-w-[300px] h-auto object-cover mx-auto lg:mx-0 rounded-full"
         />
-        <div className="flex flex-col justify-center text-center sm:text-center lg:text-start">
-          <h2 className="text-xl sm:text-2xl mb-2 sm:mb-3 font-semibold">{data.results[0].name}</h2>
-          <h2 className="text-base sm:text-lg mb-1">Designation: {data.results[0].designation}</h2>
-          <h2 className="text-base sm:text-lg mb-1">Department: {data.results[0].department}</h2>
+        <div className="flex flex-col justify-center text-center sm:text-center lg:text-start md:text-start">
+          <h2 className="text-xl sm:text-2xl mb-2 sm:mb-3 font-semibold text-orange-500">{data.results[0].name}</h2>
+          <h2 className="text-base sm:text-lg mb-1"><span className="text-orange-600 font-semibold">Designation:</span> {data.results[0].designation}</h2>
+          <h2 className="text-base sm:text-lg mb-1"><span className="text-orange-600 font-semibold">Department:</span> {data.results[0].department}</h2>
+          <h2 className="text-base sm:text-lg mb-1 text-white"><span className="text-orange-600 font-semibold">Peoples choice:</span> {sentiment}</h2>
           {avgRating ? (
-            <h2 className="text-base sm:text-lg">Average Rating: {avgRating}</h2>
+            <h2 className="text-base sm:text-lg"><span className="text-orange-600 font-semibold">Average Rating:</span> {avgRating}</h2>
           ) : (
             <h2 className="text-base sm:text-lg">Average Rating: Don't have enough rating information</h2>
           )}
@@ -146,7 +151,7 @@ export default function FacultyDetails() {
                     <div className="p-4 sm:p-6 rounded-sm bg-[#2A2A2A] h-full">
                       <div className="flex flex-col h-full">
                         <p className="text-base sm:text-lg mb-4 flex-grow">{item.review_text}</p>
-                        <h3 className="text-sm sm:text-base">Rating: ⭐ {item.rating}</h3>
+                        <h3 className="text-sm sm:text-base text-orange-600 font-semibold">Rating: ⭐ {item.rating}</h3>
                       </div>
                     </div>
                   </div>

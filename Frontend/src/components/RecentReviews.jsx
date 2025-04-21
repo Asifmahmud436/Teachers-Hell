@@ -11,7 +11,8 @@ export default function RecentReviews() {
     fetch(`https://bracademic.vercel.app/api/faculty/reviews/list/`)
       .then((res) => res.json())
       .then((data) => {
-        setReviews(data.slice(0, 6))
+        console.log(data)
+        setReviews(data.reviews.slice(0, 6))
       })
       .catch((error) => {
         console.error("Error fetching reviews:", error)
