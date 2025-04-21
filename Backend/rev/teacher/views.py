@@ -4,7 +4,7 @@ from rest_framework import status
 from rest_framework.pagination import PageNumberPagination
 from teacher.models import Review, Faculty
 from teacher.serializers import ReviewSerializer , FacultySerializer
-from django.db.models import Avg  
+from django.db.models import Avg, Count
 
 class FacultyPagination(PageNumberPagination):
     page_size = 9  # The number of items per page 
@@ -83,5 +83,23 @@ class ReviewListView(APIView):
         else:
             reviews = Review.objects.all()
 
+        # Calculate average sentiment
+        sentiment_mapping = {"positive": 1, "neutral": 0, "negative": -1}
+        sentiment_scores = [sentiment_mapping[review.sentiment] for review in reviews if review.sentiment in sentiment_mapping]
+        average_sentiment_score = sum(sentiment_scores) / len(sentiment_scores) if sentiment_scores else 0
+
+        # Map average sentiment score back to sentiment label
+        if average_sentiment_score > 0:
+            average_sentiment = "positive"
+        elif average_sentiment_score < 0:
+            average_sentiment = "negative"
+        else:
+            average_sentiment = "neutral"
+
+        # Serialize the reviews
         serializer = ReviewSerializer(reviews, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+
+        return Response({
+            "reviews": serializer.data,
+            "average_sentiment": average_sentiment
+        }, status=status.HTTP_200_OK)
