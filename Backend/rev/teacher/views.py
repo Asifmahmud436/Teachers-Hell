@@ -83,23 +83,17 @@ class ReviewListView(APIView):
         else:
             reviews = Review.objects.all()
 
-        # Calculate average sentiment
-        sentiment_mapping = {"positive": 1, "neutral": 0, "negative": -1}
-        sentiment_scores = [sentiment_mapping[review.sentiment] for review in reviews if review.sentiment in sentiment_mapping]
-        average_sentiment_score = sum(sentiment_scores) / len(sentiment_scores) if sentiment_scores else 0
+        if not reviews.exists():
+            return Response({"detail": "No reviews found."}, status=status.HTTP_404_NOT_FOUND)
 
-        # Map average sentiment score back to sentiment label
-        if average_sentiment_score > 0:
-            average_sentiment = "positive"
-        elif average_sentiment_score < 0:
-            average_sentiment = "negative"
-        else:
-            average_sentiment = "neutral"
+        # Calculate the most frequent sentiment
+        sentiment_counts = reviews.values('sentiment').annotate(count=Count('sentiment'))
+        most_frequent_sentiment = max(sentiment_counts, key=lambda x: x['count'], default={"sentiment": "neutral"})['sentiment']
 
         # Serialize the reviews
         serializer = ReviewSerializer(reviews, many=True)
 
         return Response({
             "reviews": serializer.data,
-            "average_sentiment": average_sentiment
+            "average_sentiment": most_frequent_sentiment
         }, status=status.HTTP_200_OK)
